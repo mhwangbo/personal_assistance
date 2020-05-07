@@ -12,6 +12,7 @@ def listen():
         r.adjust_for_ambient_noise(source)
         print("listening...")
         audio = r.listen(source)
+        print("finished")
 
     try:
         transcript = r.recognize_google(audio, language="ko-KR")

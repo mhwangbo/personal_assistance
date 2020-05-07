@@ -6,7 +6,7 @@ def try_recording():
 
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
-    CHANNELS = 2
+    CHANNELS = 1
     RATE = 44100
     RECORD_SECONDS = 5
     WAVE_OUTPUT_FILENAME = "output.wav"
@@ -64,3 +64,7 @@ if __name__ == "__main__":
             function_list[select - 1]()
         except:
             print("invalid option")
+        # select = int(input())
+        # if select == 999:
+        #     break
+        # function_list[select - 1]()
