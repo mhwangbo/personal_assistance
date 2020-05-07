@@ -9,20 +9,20 @@ def listen():
     mic = sr.Microphone(device_index=0)
 
     with mic as source:
-        r.adjust_for_ambient_noise(source)
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source, duration=1)
         print("listening...")
         audio = r.listen(source)
         print("finished")
 
     try:
         transcript = r.recognize_google(audio, language="ko-KR")
-        return transcript
     except sr.UnknownValueError:
-        return "이해 할 수 없어요."
-    except sr.RequestError as e:
-        return e
+        transcript = "죄송해요, 못 알아 들었어요"
+    except sr.RequestError:
+        transcript = "오류가 발생했습니다"
+    return transcript
 
 if __name__ == "__main__":
     transcript = listen()
-    speak(transcript)
-    print(transcript)
+    print(transcript.split())
