@@ -24,5 +24,7 @@ def listen():
     return transcript
 
 if __name__ == "__main__":
-    transcript = listen()
-    print(transcript.split())
+    while True:
+        transcript = listen().split()
+        if transcript[0] == "안녕":
+            speak("네, 안녕하세요.")
